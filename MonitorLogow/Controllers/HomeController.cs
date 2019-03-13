@@ -12,6 +12,9 @@ namespace MonitorLogow.Controllers
     {
         public IActionResult Index()
         {
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+            logger.Info("Hello World");
+
             return View();
         }
 
