@@ -12,5 +12,12 @@ namespace MonitorLogow.Controllers
         {
             return View();
         }
+
+        public IActionResult CreateLog()
+        {
+            //TODO: Save log
+
+            return RedirectToAction("Index", "Logging");
+        }
     }
 }
