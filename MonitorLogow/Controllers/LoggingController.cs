@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MonitorLogow.Models;
 using NLog;
 
 namespace MonitorLogow.Controllers
@@ -16,8 +17,11 @@ namespace MonitorLogow.Controllers
             return View();
         }
 
-        public IActionResult CreateLog()
+        [HttpPost]
+        public IActionResult CreateLog(LogModel log)
         {
+            if (log.Message == null) //TODO: Validate form to check if it's null
+                log.Message = "";
             _logger.Info("Logg buton has been pressed");
 
             return RedirectToAction("Index", "Logging");
