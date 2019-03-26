@@ -1,10 +1,22 @@
-﻿@{
+﻿@model LogModel
+@{
     ViewData["Title"] = "Index";
 }
 
 <div class="container">
     <h1>Manual log generation</h1>
+    @using (@Html.BeginForm("CreateLog", "Logging", FormMethod.Post))
+    {   
+        <div class="form-group">
+            @Html.LabelFor(m => m.Message, "Log message")
+            @Html.EditorFor(m => m.Message, new { htmlAttributes = new { @class = "form-control" }})
+        </div>
 
-    @Html.ActionLink("Generate log", "CreateLog", "Logging", null, new { @class = "btn btn-primary" })
+        <div class="form-group">
+            <input class = "btn btn-primary" type="submit" value="Generate log" />
+        </div>
+    }
+
+    @*@Html.ActionLink("Generate log", "CreateLog", "Logging", null, new { @class = "btn btn-primary" })*@
 </div>
 
