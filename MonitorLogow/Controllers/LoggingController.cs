@@ -22,7 +22,30 @@ namespace MonitorLogow.Controllers
         {
             if (log.Message == null) //TODO: Validate form to check if it's null
                 log.Message = "";
-            _logger.Info(log.Message);
+
+            switch (log.LogType)
+            {
+                case LogModel.LogTypes.Trace:
+                    _logger.Trace(log.Message);
+                    break;
+                case LogModel.LogTypes.Debug:
+                    _logger.Debug(log.Message);
+                    break;
+                case LogModel.LogTypes.Info:
+                    _logger.Info(log.Message);
+                    break;
+                case LogModel.LogTypes.Warn:
+                    _logger.Warn(log.Message);
+                    break;
+                case LogModel.LogTypes.Error:
+                    _logger.Error(log.Message);
+                    break;
+                case LogModel.LogTypes.Fatal:
+                    _logger.Fatal(log.Message);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
             return RedirectToAction("Index", "Logging");
         }
