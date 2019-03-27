@@ -22,7 +22,7 @@ namespace MonitorLogow.Controllers
         {
             if (log.Message == null) //TODO: Validate form to check if it's null
                 log.Message = "";
-            _logger.Info("Logg buton has been pressed");
+            _logger.Info(log.Message);
 
             return RedirectToAction("Index", "Logging");
         }
